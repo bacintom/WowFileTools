@@ -3,6 +3,7 @@ Unofficial tools to help other users of the Sparkmaker 3d printer.
 
 - `estimate_print_time.py`: estimates printing time of the wow file. (Sum of layer print time and platform motion time, when speed is defined). As far I have tested, it seems to underestimate the time a little (like, a couple minutes for a 5-hour print).
 - `view_wow.py`: displays a wow file as voxels in 3d. Warning: needs a lot of RAM and maybe a good graphics card...
+- `write_fake_file_for_curing.py` for generating a print.wow file that acts as a curing lamp. Probably you don't need to use that script as there is already a generated file in the "CurerSlice" folder. See the readme in that folder for details
   
   ![Alt text](screenshot.png?raw=true "Screenshot")
 
