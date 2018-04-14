@@ -90,15 +90,23 @@ def run(wow_file_path):
                 layers.append(
                     np.unpackbits(np.fromstring(
                         l[:-1], dtype=np.uint8)).reshape((H, W)))
+                if prev_layer_z:
+                    new_layer_thickness = z - prev_layer_z
+                    if layer_thickness is not None: #let's check if layer thickness is consistent throughout the file
+                        if abs(layer_thickness - new_layer_thickness) > .00001:
+                            print("WARNING!! Layer thickness seems to vary inside the file (%.04f -> %.04f). Display may be wrong."%(layer_thickness,new_layer_thickness))
+                    layer_thickness = new_layer_thickness
+                prev_layer_z = z
                 #print("bitmap[%d]: "%(len(l)-1,),l[:10]," ... ",l[-10:])
             elif line.startswith(b"}}"):  #end of pixel data
                 pass
             else:
                 print("not understood:", line)
 
+        print("LAYER THICKNESS : %.04f" % layer_thickness)
         print("PRINT TIME ESTIMATE:", str(datetime.timedelta(seconds=ptime)))
         app = QtGui.QApplication([])
-        QtGui.QMessageBox.about(None,"Estimate","Print time estimate: %s" % str(datetime.timedelta(seconds=ptime)))
+        QtGui.QMessageBox.about(None,"Estimate","Print time estimate: %s." % str(datetime.timedelta(seconds=ptime)))
 
         layers = np.array(layers)[:]
         layers = layers.reshape(len(layers), H, W // 8,
@@ -108,9 +116,6 @@ def run(wow_file_path):
         layers_rgba = np.concatenate(
             [layers, layers, layers, layers], axis=3) * 255
         layers_rgba[:, :, :, 3] //= 32
-        #for voxel in layers_rgba.reshape((50*H*W,4)):
-        #    if voxel[3] != 0:
-        #        print("voxel:",voxel)
 
         w = gl.GLViewWidget()
         w.opts['distance'] = 200
@@ -124,7 +129,7 @@ def run(wow_file_path):
         data = layers_rgba.transpose(1, 2, 0, 3)
 
         v = gl.GLVolumeItem(data)
-        v.scale(.1, .1, .05)
+        v.scale(.1, .1, layer_thickness)
         w.addItem(v)
 
         ax = gl.GLAxisItem()
