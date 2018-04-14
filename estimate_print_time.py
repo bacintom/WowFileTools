@@ -24,7 +24,6 @@ def run(wow_file_path:str):
     """main"""
     W, H, L = None, None, None
     maxL = 0
-    layer_thickness = None
     z = 0.0
     ptime = 0
     zspeed = None
