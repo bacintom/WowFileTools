@@ -1,8 +1,9 @@
 # WowFileTools
 Tools to help users of the Sparkmaker 3d printer.
 
-- view_wow.py: displays a wow file as voxels in 3d. Warning: needs a lot of RAM and maybe a good graphics card...
 - estimate_print_time.py: estimates printing time of the wow file. (Sum of layer print time and platform motion time, when speed is defined)
+- view_wow.py: displays a wow file as voxels in 3d. Warning: needs a lot of RAM and maybe a good graphics card...
+![Alt text](screenshot.png?raw=true "Screenshot")
 
 # USAGE:
 python estimate_print_time.py path/to/file.wow
