@@ -3,9 +3,10 @@ Unofficial tools to help other users of the Sparkmaker 3d printer.
 
 - `estimate_print_time.py`: estimates printing time of the wow file. (Sum of layer print time and platform motion time, when speed is defined)
 - `view_wow.py`: displays a wow file as voxels in 3d. Warning: needs a lot of RAM and maybe a good graphics card...
-![Alt text](screenshot.png?raw=true "Screenshot")
+  
+  ![Alt text](screenshot.png?raw=true "Screenshot")
 
-# USAGE:
+# USAGE
 `python estimate_print_time.py path/to/file.wow`
 `python view_wow.py path/to/file.wow`
 
@@ -27,7 +28,7 @@ On some platforms, e.g. ubuntu, you must call python3 instead of python, as, for
     - `python estimate_print_time.py path\to\file.wow`
 
 - on Ubuntu (>=16.04), should be:
-    - spawn a terminal (e.g. Ctrl+T)
+    - spawn a terminal (e.g. Ctrl+Alt+T)
     - `sudo apt install python3 python3-pyqt5 python3-pyqt5.qtopengl`
     - `sudo -H python3 -m pip install pyqtgraph numpy`
     - `cd folder/where/you/have/downloaded/the/scripts`
