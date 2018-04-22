@@ -1,7 +1,7 @@
 # CurerSlice/print.wow
 
 - This print.wow is a forged .wow file that switches on the UV for one hour and that's all. Basically, it turns the Sparkmaker into a UV print curer.
-- While I think it is reasonably safe, PLEASE take the following warnings into consideration and bear them in mind:
+- PLEASE take the following warnings into consideration and bear them in mind:
     - WARNING : A lot of people, including WOW! (who makes the sparkmaker) say this is a bad idea. Your LCD/LEDs will die sooner.
     - WARNING : Use at your own risks.
     - WARNING : Be careful not to damage your eyes & skin! Put on the lid!
